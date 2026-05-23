@@ -15,6 +15,42 @@ export default function Index() {
   const [password, setPassword] = useState("");
   const [agree, setAgree] = useState(false);
 
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [agreeError, setAgreeError] = useState("");
+
+  const handleSubmit = () => {
+    setEmailError("");
+    setPasswordError("");
+    setAgreeError("");
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    let valid = true;
+
+    if (!email) {
+      setEmailError("Email is required");
+      valid = false;
+    } else if (!emailRegex.test(email)) {
+      setEmailError("Enter a valid email address");
+      valid = false;
+    }
+
+    if (!password) {
+      setPasswordError("Password is required");
+      valid = false;
+    }
+
+    if (!agree) {
+      setAgreeError("You must agree to continue");
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    console.log("Signin Successful");
+  };
+
   return (
     <ImageBackground
       source={require("../../assets/images/backgroundColor.png")}
@@ -35,6 +71,9 @@ export default function Index() {
             onChangeText={setEmail}
             placeholder="yourname@example.com"
           />
+          {emailError ? (
+            <Text style={styles.errorText}>{emailError}</Text>
+          ) : null}
 
           <CustomInput
             label="Password"
@@ -45,6 +84,9 @@ export default function Index() {
             placeholder="Enter your password"
             secureTextEntry
           />
+          {passwordError ? (
+            <Text style={styles.errorText}>{passwordError}</Text>
+          ) : null}
 
           <Text style={styles.forgetPassword}>
             Forgotten Password?
@@ -76,54 +118,31 @@ export default function Index() {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.btn}>
+          {agreeError ? (
+            <Text style={styles.errorText}>{agreeError}</Text>
+          ) : null}
+
+          <TouchableOpacity style={styles.btn} onPress={handleSubmit}>
             <Text style={styles.signin}>Signin</Text>
           </TouchableOpacity>
 
           <View style={styles.dividerContainer}>
             <View style={styles.divider} />
-
             <Text style={styles.or}>Or</Text>
-
             <View style={styles.divider} />
           </View>
         </View>
 
         <View>
-
           <TouchableOpacity style={styles.SocialMedia}>
             <Image
               style={styles.img}
               source={require("../../assets/images/goggle icon.png")}
             />
-
             <Text style={styles.continue}>
               Continue with Google
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.SocialMedia}>
-            <Image
-              style={styles.img}
-              source={require("../../assets/images/goggle icon.png")}
-            />
-
-            <Text style={styles.continue}>
-              Continue with Google
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.SocialMedia}>
-            <Image
-              style={styles.img}
-              source={require("../../assets/images/goggle icon.png")}
-            />
-
-            <Text style={styles.continue}>
-              Continue with Google
-            </Text>
-          </TouchableOpacity>
-
-
-
         </View>
       </View>
     </ImageBackground>
@@ -158,7 +177,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "white",
     marginHorizontal: 30,
-    height:'64%',
+    height: "64%",
   },
 
   formBox: {
@@ -169,7 +188,14 @@ const styles = StyleSheet.create({
   forgetPassword: {
     textAlign: "right",
     color: "#1A934E",
-    marginBottom: 20,
+    marginBottom: 10,
+  },
+
+  errorText: {
+    color: "red",
+    fontSize: 12,
+   
+    marginBottom: 10,
   },
 
   agreeContainer: {
