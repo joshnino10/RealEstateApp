@@ -5,6 +5,7 @@ import {
   ImageBackground,
   TouchableOpacity,
   Image,
+  Pressable,
 } from "react-native";
 import CustomInput from "../../Component/CustomInput/CustomInput";
 import { useState } from "react";
@@ -108,13 +109,9 @@ export default function Index() {
 
             <Text style={styles.agreeText}>
               By continuing you agree to our{" "}
-              <Text style={styles.spanText}>
-                Terms of Services
-              </Text>{" "}
+              <Text style={styles.spanText}>Terms of Services</Text>{" "}
               and{" "}
-              <Text style={styles.spanText}>
-                Privacy Policy
-              </Text>
+              <Text style={styles.spanText}>Privacy Policy</Text>
             </Text>
           </TouchableOpacity>
 
@@ -139,12 +136,48 @@ export default function Index() {
               style={styles.img}
               source={require("../../assets/images/goggle icon.png")}
             />
-            <Text style={styles.continue}>
-              Continue with Google
-            </Text>
+            <Text style={styles.continue}>Continue with Google</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.SocialMedia}>
+            <Image
+              style={styles.img}
+              source={require("../../assets/images/facebook.png")}
+            />
+            <Text style={styles.continue}>Continue with Facebook</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.SocialMedia}>
+            <Image
+              style={styles.img}
+              source={require("../../assets/images/apple.png")}
+            />
+            <Text style={styles.continue}>Continue with Apple</Text>
           </TouchableOpacity>
         </View>
       </View>
+
+      <View style={styles.gotoSignupContainer}>
+        <Text style={styles.gotoSignupText}>
+          Don’t have an account?
+        </Text>
+
+        <Pressable>
+          <Text style={styles.signupText}> Sign Up</Text>
+        </Pressable>
+      </View>
+
+      <View style={styles.gotoPractionerContainer}>
+        <Text style={styles.gotoPractitionerText}>
+        Have a home to lease?
+        </Text>
+
+        <Pressable>
+          <Text style={styles.PractitionersignupText}> Practitioner sign in </Text>
+        </Pressable>
+      </View>
+
+
     </ImageBackground>
   );
 }
@@ -194,7 +227,6 @@ const styles = StyleSheet.create({
   errorText: {
     color: "red",
     fontSize: 12,
-   
     marginBottom: 10,
   },
 
@@ -230,10 +262,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 40,
     marginTop: 15,
-    shadowColor: "#00000040",
-    shadowOffset: { width: 0, height: 7 },
-    shadowOpacity: 1.2,
-    shadowRadius: 4,
     justifyContent: "center",
     backgroundColor: "#1A934E",
   },
@@ -269,7 +297,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 20,
     borderWidth: 1,
-    borderColor: "#D9D9D9",
+    borderColor: "#B9B9B9",
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 20,
@@ -283,8 +311,44 @@ const styles = StyleSheet.create({
   },
 
   continue: {
-    textAlign: "center",
     fontSize: 14,
     color: "#000",
+  },
+
+  gotoSignupContainer: {
+    marginTop: 20,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  gotoPractionerContainer:{
+    marginTop:7,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+
+  },
+
+  gotoSignupText: {
+    fontSize:12
+   
+  },
+  gotoPractitionerText:{
+    fontSize:10
+
+  },
+
+  PractitionersignupText:{
+    color: "#1A934E",
+    fontWeight: "bold",
+    fontSize:10,
+  
+
+  },
+
+  signupText: {
+    color: "#1A934E",
+    fontWeight: "bold",
+    fontSize:12
   },
 });

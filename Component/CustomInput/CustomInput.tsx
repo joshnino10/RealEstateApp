@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
 
   label: {
     fontFamily: 'PoppinsRegular',
-    marginBottom: 15,
+    marginBottom: 10,
     fontSize: 14,
     color: "#707070",
     fontWeight: "400",
