@@ -1,4 +1,11 @@
-import { Text, View, StyleSheet, ImageBackground, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  ImageBackground,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import CustomInput from "../../Component/CustomInput/CustomInput";
 import { useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -58,10 +65,65 @@ export default function Index() {
             </View>
 
             <Text style={styles.agreeText}>
-              By continuing you agree to our <Text style={styles.spanText}>Terms of Services </Text>
-              and <Text style={styles.spanText}>Privacy Policy</Text>
+              By continuing you agree to our{" "}
+              <Text style={styles.spanText}>
+                Terms of Services
+              </Text>{" "}
+              and{" "}
+              <Text style={styles.spanText}>
+                Privacy Policy
+              </Text>
             </Text>
           </TouchableOpacity>
+
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.signin}>Signin</Text>
+          </TouchableOpacity>
+
+          <View style={styles.dividerContainer}>
+            <View style={styles.divider} />
+
+            <Text style={styles.or}>Or</Text>
+
+            <View style={styles.divider} />
+          </View>
+        </View>
+
+        <View>
+
+          <TouchableOpacity style={styles.SocialMedia}>
+            <Image
+              style={styles.img}
+              source={require("../../assets/images/goggle icon.png")}
+            />
+
+            <Text style={styles.continue}>
+              Continue with Google
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.SocialMedia}>
+            <Image
+              style={styles.img}
+              source={require("../../assets/images/goggle icon.png")}
+            />
+
+            <Text style={styles.continue}>
+              Continue with Google
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.SocialMedia}>
+            <Image
+              style={styles.img}
+              source={require("../../assets/images/goggle icon.png")}
+            />
+
+            <Text style={styles.continue}>
+              Continue with Google
+            </Text>
+          </TouchableOpacity>
+
+
+
         </View>
       </View>
     </ImageBackground>
@@ -96,7 +158,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "white",
     marginHorizontal: 30,
-    height: "60%",
+    height:'64%',
   },
 
   formBox: {
@@ -132,9 +194,71 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 12,
     color: "#999797",
-   
   },
-  spanText:{
-    color:'#1A934E'
-  }
+
+  spanText: {
+    color: "#1A934E",
+  },
+
+  btn: {
+    borderRadius: 10,
+    height: 40,
+    marginTop: 15,
+    shadowColor: "#00000040",
+    shadowOffset: { width: 0, height: 7 },
+    shadowOpacity: 1.2,
+    shadowRadius: 4,
+    justifyContent: "center",
+    backgroundColor: "#1A934E",
+  },
+
+  signin: {
+    textAlign: "center",
+    fontSize: 16,
+    color: "white",
+  },
+
+  dividerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 20,
+  },
+
+  divider: {
+    flex: 1,
+    height: 1,
+    backgroundColor: "#000000",
+  },
+
+  or: {
+    marginHorizontal: 20,
+    color: "#999",
+    fontSize: 14,
+  },
+
+  SocialMedia: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    marginTop: 20,
+    borderWidth: 1,
+    borderColor: "#D9D9D9",
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    width: "85%",
+  },
+
+  img: {
+    width: 24,
+    height: 24,
+    marginRight: 10,
+  },
+
+  continue: {
+    textAlign: "center",
+    fontSize: 14,
+    color: "#000",
+  },
 });
